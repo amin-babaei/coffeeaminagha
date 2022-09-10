@@ -36,6 +36,7 @@ const Cart = () => {
     }
 
     const handlePayment = async (total) => {
+        dispatch({ type: "LOADING", payload: true});
         let newCart = [];
         for (const item of newCart) {
             const res = await getData(`product/${item._id}`);
@@ -43,11 +44,10 @@ const Cart = () => {
                 newCart.push(item);
             }
         }
-        dispatch({ type: "NOTIFY", payload: { loading: true } });
         postData('order', { cart, total })
             .then(res => {
                     if (res.err){
-                        dispatch({ type: "NOTIFY", payload: { loading: false }});
+                        dispatch({ type: "LOADING", payload: false});
                         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
                     }
                     dispatch({ type: "ADD_CART", payload: [] });
@@ -57,7 +57,7 @@ const Cart = () => {
                     };
                     dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
                     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-                    dispatch({ type: "NOTIFY", payload: { loading: false } });
+                    dispatch({ type: "LOADING", payload: false});
                     return router.push(`/profile/order/${res.newOrder._id}`);
                 }
             );
