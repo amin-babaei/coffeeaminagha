@@ -1,0 +1,51 @@
+@font-face {
+  font-family:samim;
+  src: url("../public/fonts/Samim-FD.woff") format("woff");
+  src: url("../public/fonts/Samim-FD.woff2") format("woff2");
+  src: url("../public/fonts/Samim-FD.eot") format("eot");
+  src: url("../public/fonts/Samim-FD.ttf") format("truetype");
+  font-weight: normal;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background:black
+}
+* {
+  box-sizing: border-box;
+  font-family: samim !important;
+}
+input[type=submit]{
+  cursor:pointer
+}
+.border{
+  border: 1px solid rgba(255,255,255,0.3)
+}
+/* react-multi-date-picker  */
+.custom-container .rmdp-input {
+  background-color:inherit;
+  border:none;
+  box-sizing: border-box;
+  color: white;
+  width: 70px;
+}
+.custom-container .rmdp-input:focus{
+  outline: none;
+  border: none;
+  box-shadow: none
+}
+/* ------------------ */
+.loading {
+  margin: auto;
+  border: 1px solid black;
+  width: 200px;
+  height: 100px;
+  color: white;
+  animation: loading 5s infinite;
+}
+@keyframes loading {
+  50% {transform: rotate(360deg);}
+}
