@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   env: {
     BASE_URL:process.env.BASE_URL,
+    NEXTAUTH_URL:process.env.NEXTAUTH_URL,
     MONGODB_URL:process.env.MONGODB_URL,
     NEXT_SECRET: process.env.NEXT_SECRET,
     CLOUD_UPDATE_PRESET:process.env.CLOUD_UPDATE_PRESET,
