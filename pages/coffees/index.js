@@ -1,4 +1,3 @@
-import {getData} from "../../services/fetchData";
 import {Box, Container, Grid, Typography} from "@mui/material";
 import CoffeeItem from "../../components/coffee/CoffeeItem";
 import Head from "next/head";
@@ -10,6 +9,8 @@ import CardSkelet from "../../components/skeleton/CardSkelet";
 import Searchbar from "../../components/coffee/Searchbar";
 import {debounce} from "lodash";
 import usePaginate from "../../helper/hooks/usePaginate";
+import Products from "../../models/ProductModel";
+import connectDB from "../../utils/connectDB";
 
 const Coffees = ({products}) => {
     const {currentPage, perPage, handlePage} = usePaginate(6)
@@ -65,10 +66,12 @@ const Coffees = ({products}) => {
     )
 }
 export const getServerSideProps = async () => {
-    const product = await getData('product')
+    await connectDB()
+    const response = await Products.find()
+    const products = JSON.parse(JSON.stringify(response));
     return {
         props: {
-            products: product.products
+            products: products
         }
     }
 }
