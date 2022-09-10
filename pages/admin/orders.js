@@ -12,7 +12,6 @@ import TableSkelet from "../../components/skeleton/TableSkelet";
 import useFetch from "../../helper/hooks/useFetch";
 import usePaginate from "../../helper/hooks/usePaginate";
 
-
 export default function Orders() {
     const {data: session} = useSession();
     const {data: orders, loading} = useFetch("/order")
@@ -83,9 +82,10 @@ export default function Orders() {
                     </TableContainer>
                 )
             }
-
-            <PaginationComponent totalProduct={updated && updated.length} currentPage={currentPage} perPage={perPage}
-                                 onPageChange={handlePage}/>
+            {!loading &&
+                <PaginationComponent totalProduct={updated?.length} currentPage={currentPage} perPage={perPage}
+                                     onPageChange={handlePage}/>
+            }
         </>
     );
 }

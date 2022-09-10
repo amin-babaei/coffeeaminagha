@@ -100,13 +100,12 @@ const Success = ({orders}) => {
 export const getServerSideProps = async ({req}) => {
     const session = await getSession({req});
     await connectDB()
-    let orderUser
-    orderUser = await Orders.find({user: session.user._id}).populate("user", "-password").select("-user").sort({ createdAt: -1 })
-    const orderConvert = JSON.parse(JSON.stringify(orderUser));
+    let response = await Orders.find({user: session.user._id}).populate("user", "-password").select("-user").sort({ createdAt: -1 })
+    const orders = JSON.parse(JSON.stringify(response));
 
     return {
         props: {
-            orders: orderConvert,
+            orders
         },
     };
 }

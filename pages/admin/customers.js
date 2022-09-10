@@ -11,7 +11,7 @@ import {useEffect, useState} from "react";
 
 export default function Customers() {
     const {data: session} = useSession();
-    const {data:customers,loading} = useFetch("/customers")
+    const {data: customers, loading} = useFetch("/customers")
     const {dispatch} = useContext(DataContext);
     const [updated, setUpdated] = useState([]);
 
@@ -39,16 +39,14 @@ export default function Customers() {
             }
         } else return dispatch({type: "NOTIFY", payload: {error: "شما اجازه حذف کاربر را ندارید"}})
     }
-    return (
-        <>
+    return (<>
             <Head>
                 <title>مشتری ها</title>
             </Head>
-            {loading ? <TableSkelet/> : (
-                <TableContainer component={Paper}>
+            {loading ? <TableSkelet/> : (<TableContainer component={Paper}>
                     <Table sx={{minWidth: 650}} aria-label="simple table">
                         <TableHead>
-                            <TableRow color="white" style={{backgroundColor:"black"}}>
+                            <TableRow color="white" style={{backgroundColor: "black"}}>
                                 <TableCell color="white" align="center">نام کاربری</TableCell>
                                 <TableCell color="white" align="center">ایمیل</TableCell>
                                 <TableCell color="white" align="center">شماره تماس</TableCell>
@@ -57,8 +55,7 @@ export default function Customers() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {updated && updated.map((customer) => (
-                                <TableRow
+                            {updated?.map((customer) => (<TableRow
                                     key={customer._id}
                                     sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                 >
@@ -67,21 +64,14 @@ export default function Customers() {
                                     <TableCell align="center">{customer.phone}</TableCell>
                                     <TableCell align="center">{customer.city}</TableCell>
                                     <TableCell align="center">
-                                        {loading ? (
-                                            <ButtonLoad loading={loading} message="منتظر بمانید..."/>
-                                        ) : (
+                                        {loading ? (<ButtonLoad loading={loading} message="منتظر بمانید..."/>) : (
                                             <Button variant="contained" color="error"
-                                                    onClick={() => deleteCustomer(customer._id)}>حذف</Button>
-                                        )
-                                        }
+                                                    onClick={() => deleteCustomer(customer._id)}>حذف</Button>)}
                                     </TableCell>
-                                </TableRow>
-                            ))}
+                                </TableRow>))}
                         </TableBody>
                     </Table>
-                </TableContainer>
-            )}
-        </>
-    );
+                </TableContainer>)}
+        </>);
 }
 

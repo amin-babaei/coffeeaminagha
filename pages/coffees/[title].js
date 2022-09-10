@@ -69,8 +69,8 @@ const DetailCoffee = ({product}) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Box color="primary.main">
-                            <Typography fontSize="1.9rem" component="h2">{product.title.split('-').join(" ")}</Typography>
-                            <Typography component="p" lineHeight={2} align="justify" color="primary.dark" my={2}
+                            <Typography fontSize="1.8rem" component="h2">{product.title.split('-').join(" ")}</Typography>
+                            <Typography component="p" lineHeight={2} align="justify" color="primary.dark" my={3}
                                         maxWidth="400px">{product.description}</Typography>
                             <Typography component="p" variant="h5" mt={5}
                                         fontWeight="bold"> قیمت: {product.price} تومان</Typography>

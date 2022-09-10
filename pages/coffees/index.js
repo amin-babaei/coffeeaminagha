@@ -55,6 +55,10 @@ const Coffees = ({products}) => {
                                 <CoffeeItem key={coffee._id} coffee={coffee}/>
                             ))
                     )}
+                    {archive.length === 0 && !loadingDebounce &&
+                        <Typography color="primary" variant="h5" width="100%" mt={20} textAlign="center">
+                            چیزی برای نمایش نداریم !
+                        </Typography>}
                 </Grid>
                 {!loadingDebounce && search.length === 0 ?
                     <PaginationComponent totalProduct={products.length} currentPage={currentPage} perPage={perPage}
@@ -71,7 +75,7 @@ export const getServerSideProps = async () => {
     const products = JSON.parse(JSON.stringify(response));
     return {
         props: {
-            products: products
+            products
         }
     }
 }

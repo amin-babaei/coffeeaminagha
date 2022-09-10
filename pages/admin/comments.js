@@ -61,7 +61,7 @@ const Comments = () => {
                 <title>نظرات</title>
             </Head>
             {loading ? <CardSkelet count={6}/>
-            :updated && updated.map(comment => (
+            :updated?.map(comment => (
                 comment.comments.length > 0 && (
                     <Grid item xs={12} sm={4} key={comment._id}>
                         <Box
@@ -72,7 +72,6 @@ const Comments = () => {
                             borderRadius="5px">
                             <Box display="flex" justifyContent="space-between">
                                 <Typography color="primary" my={2}>{comment.title}</Typography>
-
                             </Box>
                             {comment.comments.map(comment => (
                                 <div key={comment._id}>
