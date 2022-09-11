@@ -16,7 +16,7 @@ export default function useFetch(url){
                     dispatch({type:'LOADING', payload:false})
                 }catch(err){
                     console.log(err)
-                    dispatch({type:'NOTIFY', payload: {error:err.message}})
+                    dispatch({type:'NOTIFY', payload: {error:"خطا در برقراری ارتباط"}})
                     dispatch({type:'LOADING', payload:false})
                 }
             }
