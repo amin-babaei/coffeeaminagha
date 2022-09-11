@@ -29,16 +29,16 @@ const DrawerMenu = () => {
             <Drawer anchor="left" open={isOpen} onClose={()=>setIsOpen(false)}>
                 <MenuDrawer role="presentation">
               <Link href="/">
-                <Button variant="text" sx={{margin:"20px 0"}} color={router.pathname === "/" ? "secondary" : "primary"}>صفحه اصلی</Button>
+                <Button variant="outlined" sx={{margin:"20px 0",fontSize:'15px'}} color={router.pathname === "/" ? "secondary" : "primary"}>صفحه اصلی</Button>
               </Link>
               <Link href="/about">
-                <Button variant="text" sx={{margin:"20px 0"}} color={router.pathname === "/about" ? "secondary" : "primary"}>درباره ما</Button>
+                <Button variant="outlined" sx={{margin:"20px 0",fontSize:'15px'}} color={router.pathname === "/about" ? "secondary" : "primary"}>درباره ما</Button>
               </Link>
               <Link href="/contact">
-                <Button variant="text" sx={{margin:"20px 0"}} color={router.pathname === "/contact" ? "secondary" : "primary"}>تماس با ما</Button>
+                <Button variant="outlined" sx={{margin:"20px 0",fontSize:'15px'}} color={router.pathname === "/contact" ? "secondary" : "primary"}>تماس با ما</Button>
               </Link>
               <Link href="/coffees">
-                <Button variant="text" sx={{margin:"20px 0"}} color={router.pathname === "/coffees" ? "secondary" : "primary"}>کافی ها</Button>
+                <Button variant="outlined" sx={{margin:"20px 0",fontSize:'15px'}} color={router.pathname === "/coffees" ? "secondary" : "primary"}>کافی ها</Button>
               </Link>
                 </MenuDrawer>
             </Drawer>
