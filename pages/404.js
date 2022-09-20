@@ -4,7 +4,7 @@ import Image from "next/image";
 const Custom404 = () => {
     return (
         <Box width="100%" height="90vh" position="relative">
-            <Image src="/images/404.png" layout="fill"/>
+            <Image src="/images/404.svg" layout="fill"/>
         </Box>
     );
 }
