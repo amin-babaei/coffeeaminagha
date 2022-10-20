@@ -258,7 +258,7 @@ const Register = () => {
                                 مرحله بعد
                             </Button>
                             <Link href="/login">
-                                <Typography component="a" color="primary"
+                                <Typography component="a" color="primary" fontSize='15px'
                                             sx={{cursor: "pointer", textDecoration: "underline"}}>
                                     حساب دارم ! میخام وارد بشم
                                 </Typography>

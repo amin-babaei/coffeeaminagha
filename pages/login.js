@@ -166,12 +166,20 @@ const Login = () => {
                                 وارد شوید
                             </Button>
                         )}
-                        <Link href="/register">
-                            <Typography component="a" color="primary"
-                                        sx={{cursor: "pointer", textDecoration: "underline"}}>
-                                حساب ندارم ! میخام بسازم
-                            </Typography>
-                        </Link>
+                            <Link href="/register">
+                                <Typography component="a" color="primary" fontSize='15px'
+                                            sx={{cursor: "pointer", textDecoration: "underline"}}>
+                                    حساب ندارم ! میخام بسازم
+                                </Typography>
+                            </Link>
+                            <br/>
+                            <br/>
+                            <Link href="/forgot-password">
+                                <Typography component="a" color="secondary" fontSize='15px'
+                                            sx={{cursor: "pointer", textDecoration: "underline"}}>
+                                    فراموشی رمز عبور
+                                </Typography>
+                            </Link>
                     </Box>
                     <FooterSignup/>
                 </Box>

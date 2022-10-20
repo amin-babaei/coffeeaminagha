@@ -33,7 +33,9 @@ function MyApp({Component, pageProps: {session, ...pageProps}, emotionCache = cl
                             height={3}
                             showOnShallow={true}
                         />
-                        {router.pathname === '/login' || router.pathname === '/register' ? (
+                        {router.pathname === '/login' || router.pathname === '/register' || router.pathname === '/reset-password'
+                        || router.pathname === '/forgot-password'
+                            ? (
                             <Component {...pageProps} />
                         ) : router.pathname.startsWith('/admin')
                             ? (
