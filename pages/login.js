@@ -176,8 +176,8 @@ const Login = () => {
                             <br/>
                             <Link href="/forgot-password">
                                 <Typography component="a" color="secondary" fontSize='15px'
-                                            sx={{cursor: "pointer", textDecoration: "underline"}}>
-                                    فراموشی رمز عبور
+                                            sx={{cursor: "pointer"}}>
+                                    رمزعبور خود را فراموش کردید؟
                                 </Typography>
                             </Link>
                     </Box>

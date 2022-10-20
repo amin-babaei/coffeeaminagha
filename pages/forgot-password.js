@@ -6,9 +6,9 @@ import Image from "next/image";
 import {postData} from "../services/fetchData";
 import {useContext} from "react";
 import {DataContext} from "../store/GlobaStore";
-import {useRouter} from "next/router";
 import ButtonLoad from "../helper/decoration/ButtonLoad";
 import Notify from "../helper/decoration/Notify";
+import Head from "next/head";
 
 const Wrapper = styled(Box)(({theme}) => ({
         width:"100%",
@@ -20,7 +20,7 @@ const Wrapper = styled(Box)(({theme}) => ({
 const ForgotPassword = () => {
     const {state, dispatch} = useContext(DataContext);
     const {loading} = state;
-    const router = useRouter();
+
     const {control, register, handleSubmit, formState} = useForm({
         mode: "onChange", reValidateMode: 'onBlur'
     });
@@ -42,6 +42,9 @@ const ForgotPassword = () => {
     }
     return (
         <Box component='form' onSubmit={handleSubmit(forgotPass)} minHeight='90vh' display='flex' flexDirection='column' alignItems='center' mt={5}>
+            <Head>
+                <title>بازیابی رمزعبور</title>
+            </Head>
             <Box sx={{cursor:"pointer"}}>
                 <Link href="/">
                     <Image
@@ -53,6 +56,7 @@ const ForgotPassword = () => {
                 </Link>
             </Box>
             <Typography color={"primary"} my={2}>برای بازیابی رمز عبور ، ایمیل حساب کاربری خود را وارد کنید</Typography>
+            <Typography color={"primary"} my={2}>یک لینک برای ساختن رمز عبور جدید در ایمیل خود دریافت خواهید کرد</Typography>
             <Wrapper>
                 <Controller
                     defaultValue={''}

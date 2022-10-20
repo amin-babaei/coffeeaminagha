@@ -3,10 +3,14 @@ import {Controller, useForm} from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
 import LockIcon from "@mui/icons-material/Lock";
-import {useContext,useState} from "react";
-import {DataContext} from "../store/GlobaStore";
-import {putData} from "../services/fetchData";
-import ButtonLoad from "../helper/decoration/ButtonLoad";
+import {useContext} from "react";
+import {DataContext} from "../../store/GlobaStore";
+import {patchData} from "../../services/fetchData";
+import ButtonLoad from "../../helper/decoration/ButtonLoad";
+import {useRouter} from "next/router";
+import Notify from "../../helper/decoration/Notify";
+import Head from "next/head";
+
 
 const Wrapper = styled(Box)(({theme}) => ({
     width:"100%",
@@ -20,27 +24,36 @@ const ResetPassword = () => {
     const {control, register, handleSubmit, formState} = useForm({
         mode: "onChange", reValidateMode: 'onBlur'
     });
-    const initialSate = {
-        password: "",
-        cf_password: "",
-    };
-    const [data, setData] = useState(initialSate);
-    const {password, cf_password } = data;
+    const router = useRouter()
+    const {token} = router.query
+
     const {state, dispatch} = useContext(DataContext);
     const {loading} = state;
 
-    const updatePassword = ({password,cf_password}) => {
-        dispatch({ type: "NOTIFY", payload: { loading: true } });
-        putData("customers/reset-password", { password,cf_password }).then((res) => {
+    const updatePassword = async ({password,cf_password}) => {
+        dispatch({ type: "LOADING", payload: { loading: true } });
+        try {
+            const res = await patchData(`customers/reset-password/${token}`,{password,cf_password})
             console.log(res)
-            if (res.err)
-                return dispatch({ type: "NOTIFY", payload: { error: res.err } });
-            return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-        });
+            if (res.ok === true){
+                dispatch({type: "LOADING", payload: false});
+                dispatch({type: 'NOTIFY', payload: {success: res.message}})
+                await router.replace('/login')
+            }else{
+                dispatch({type: "LOADING", payload: false});
+                dispatch({type: 'NOTIFY', payload: {error: res.err}})
+            }
+        }catch(err){
+            dispatch({type: 'NOTIFY', payload: {error: 'شما اجازه دسترسی ندارید'}})
+            dispatch({type: "LOADING", payload: false});
+        }
     };
 
     return (
         <Box component='form' onSubmit={handleSubmit(updatePassword)} minHeight='90vh' display='flex' flexDirection='column' alignItems='center' mt={5}>
+            <Head>
+                <title>تغییر رمز عبور</title>
+            </Head>
             <Box sx={{cursor:"pointer"}}>
                 <Link href="/">
                     <Image
@@ -91,26 +104,26 @@ const ResetPassword = () => {
                 </Controller>
                 <Controller
                     defaultValue={''}
-                    name='password'
+                    name='cf_password'
                     control={control}
                     rules={{required: true}}
                     render={({field}) => {
                         return (
                             <TextField
                                 label="تکرار رمز عبور"
-                                {...register("password", {
+                                {...register("cf_password", {
                                     required: "این فیلد اجباری است",
                                     minLength: {
                                         value: 5,
                                         message: "رمز عبور باید حداقل 5 کاراکتر باشد"
                                     }
                                 })}
-                                error={Boolean(formState.errors.password)}
-                                helperText={formState.errors?.password ? formState.errors.password.message : null}
+                                error={Boolean(formState.errors.cf_password)}
+                                helperText={formState.errors?.cf_password ? formState.errors.cf_password.message : null}
                                 margin="normal"
                                 autoComplete='off'
                                 type="password"
-                                name="password"
+                                name="cf_password"
                                 fullWidth
                                 variant="outlined"
                                 InputProps={{
@@ -127,9 +140,10 @@ const ResetPassword = () => {
                 >
                 </Controller>
                 {loading ? <ButtonLoad loading={loading} message='منتظر بمانید ...'/>
-                : <Button variant="outlined" color="secondary" fullWidth sx={{mt:2, fontSize:'16px'}}>تغیر پسورد</Button>
+                    : <Button type='submit' variant="outlined" color="secondary" fullWidth sx={{mt:2, fontSize:'16px'}}>تغیر پسورد</Button>
                 }
             </Wrapper>
+            <Notify/>
         </Box>
     );
 }

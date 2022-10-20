@@ -1,6 +1,5 @@
 import connectDB from '../../../utils/connectDB'
 import Customer from '../../../models/CustomerModel'
-import {getSession} from "next-auth/react";
 import jwt from 'jsonwebtoken'
 import {sendEmail} from "../../../utils/mailer";
 
@@ -16,12 +15,11 @@ export default async (req, res) => {
 
 const forgotPassword = async (req, res) => {
     try {
-        const session = await getSession({ req });
         const { email } = req.body
 
         const customer = await Customer.findOne({ email: email });
         if(!customer) return res.status(400).json({err: 'این ایمیل ثبت نشده دوست من'})
-        const token = jwt.sign({ userId: customer._id }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ customerId: customer._id }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });
         const resetLink = `https://coffeeaminagha.vercel.app/reset-password/${token}`;
@@ -32,6 +30,7 @@ const forgotPassword = async (req, res) => {
             "فراموشی رمز عبور",
             `
         جهت تغییر رمز عبور فعلی رو لینک زیر کلیک کنید
+        <br/>
         <a href="${resetLink}">لینک تغییر رمز عبور</a>
     `
         );
