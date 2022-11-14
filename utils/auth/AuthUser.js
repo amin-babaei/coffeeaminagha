@@ -1,4 +1,4 @@
-import {useSession} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
 import {useContext, useEffect} from "react";
 import {DataContext} from "../../store/GlobaStore";
 import {useRouter} from "next/router";
@@ -7,7 +7,12 @@ import {Box} from "@mui/material";
 import Image from "next/image";
 
 function AuthUser({children}) {
-    const {status, data: session} = useSession();
+    const {status, data: session} = useSession({
+        required:true,
+        onUnauthenticated(){
+            router.push('/login')
+        }
+    });
     const {dispatch} = useContext(DataContext);
     const router = useRouter();
     useEffect(() => {
@@ -24,9 +29,6 @@ function AuthUser({children}) {
                 <Image src='/images/logo.png' width="100px" height="100px" layout="fixed" className="loading"/>
             </Box>
         </div>
-    }
-    if (!session) {
-        router.push('/login');
     }
     return children
 }
