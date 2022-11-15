@@ -1,6 +1,6 @@
 const nodeMailer = require("nodemailer");
 
-export const sendEmail = (email, fullName, subject, message) => {
+export const sendEmail = async (email, fullName, subject, message) => {
     const transporter = nodeMailer.createTransport({
         service: "hotmail",
         auth: {
@@ -8,7 +8,7 @@ export const sendEmail = (email, fullName, subject, message) => {
             pass: "amin12345",
         },
     });
-    transporter.sendMail({
+    await transporter.sendMail({
         from: "coffeeaminagha@outlook.com",
         to: email,
         subject: subject,

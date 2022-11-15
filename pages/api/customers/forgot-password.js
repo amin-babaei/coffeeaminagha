@@ -22,7 +22,7 @@ const forgotPassword = async (req, res) => {
         const token = jwt.sign({ customerId: customer._id }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });
-        const resetLink = `https://coffeeaminagha.vercel.app/reset-password/${token}`;
+        const resetLink = `${process.env.BASE_URL}/reset-password/${token}`;
 
         sendEmail(
             customer.email,
