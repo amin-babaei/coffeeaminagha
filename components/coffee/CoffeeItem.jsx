@@ -18,7 +18,7 @@ const CoffeeItem = ({coffee,deleted,loading}) => {
                     sx={{backgroundColor:common.black,p:1}}
                 />
                 <CardContent sx={{background:common.black}}>
-                    <Typography gutterBottom variant="h6" component="h3" align="center" color="primary">
+                    <Typography gutterBottom variant="h6" component="h3" align="center" color="primary" fontSize='1.1rem'>
                         {coffee.title.split('-').join(' ')}
                     </Typography>
                 </CardContent>

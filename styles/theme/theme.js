@@ -97,6 +97,17 @@ export const theme= createTheme({
                     },
                 }
             }
+        },
+        MuiPaper:{
+            styleOverrides:{
+                root:{
+                    '& .MuiMenu-list':{
+                        paddingTop:0,
+                        paddingBottom:0,
+                        backgroundColor:'#f4bf795c'
+                    }
+                }
+            }
         }
     }
 })

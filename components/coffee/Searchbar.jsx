@@ -40,16 +40,16 @@ const Searchbar = ({coffees,setCoffee,changed}) => {
                     },
                 }}
                 SelectProps={{
-                    style: {borderTopRightRadius: "0", borderBottomRightRadius:"0"}
+                    style: {borderTopRightRadius: "0", borderBottomRightRadius:"0",}
                 }}
                 inputProps={{
                     style: {color: "white"}
                 }}>
-                <MenuItem value="پرفروش ترین" onClick={highSold}>پرفروش ترین</MenuItem>
-                <Divider/>
-                <MenuItem value="بالاترین قیمت" onClick={productDesc}>بالاترین قیمت</MenuItem>
-                <Divider/>
-                <MenuItem value="کمترین قیمت" onClick={productAsc}>کمترین قیمت</MenuItem>
+                <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}} value="پرفروش ترین" onClick={highSold}>پرفروش ترین</MenuItem>
+                <Divider style={{margin:0}}/>
+                <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}} value="بالاترین قیمت" onClick={productDesc}>بالاترین قیمت</MenuItem>
+                <Divider style={{margin:0}}/>
+                <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}} value="کمترین قیمت" onClick={productAsc}>کمترین قیمت</MenuItem>
             </TextField>
         </Box>
     )

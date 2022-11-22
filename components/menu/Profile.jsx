@@ -71,7 +71,7 @@ const Profile = () => {
                                 left: "14px",
                                 width: 10,
                                 height: 10,
-                                backgroundColor: 'background.paper',
+                                backgroundColor:'#f4bf79',
                                 transform: 'translateY(-50%) rotate(45deg)',
                                 zIndex: 0,
                             },
@@ -81,7 +81,7 @@ const Profile = () => {
                     anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
                 >
                     <Link href="/profile">
-                        <MenuItem>
+                        <MenuItem sx={{paddingTop:'15px',paddingBottom:'15px'}}>
                             <ListItemIcon>
                                 <AssignmentIndIcon fontSize="small"/>
                             </ListItemIcon>
@@ -89,7 +89,7 @@ const Profile = () => {
                         </MenuItem>
                     </Link>
                     <Link href="/cart">
-                    <MenuItem>
+                    <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}}>
                         <ListItemIcon>
                             <Badge badgeContent={!cart ? "0" : cart.length} color="secondary">
                                 <AddShoppingCartIcon fontSize="small"/>
@@ -101,7 +101,7 @@ const Profile = () => {
                     <Divider/>
                     {session.user.isAdmin && (
                         <Link href="/admin">
-                            <MenuItem>
+                            <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}}>
                                 <ListItemIcon>
                                     <AdminPanelSettingsIcon fontSize="small"/>
                                 </ListItemIcon>
@@ -109,7 +109,7 @@ const Profile = () => {
                             </MenuItem>
                         </Link>
                     )}
-                    <MenuItem onClick={handleLogout}>
+                    <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}} onClick={handleLogout}>
                         <ListItemIcon>
                             <Logout fontSize="small"/>
                         </ListItemIcon>
