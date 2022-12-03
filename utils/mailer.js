@@ -4,12 +4,12 @@ export const sendEmail = async (email, fullName, subject, message) => {
     const transporter = nodeMailer.createTransport({
         service: "hotmail",
         auth: {
-            user: "coffeeaminagha@outlook.com",
-            pass: "amin12345",
+            user: process.env.EMAIL,
+            pass: process.env.PASS,
         },
     });
     await transporter.sendMail({
-        from: "coffeeaminagha@outlook.com",
+        from: process.env.EMAIL,
         to: email,
         subject: subject,
         html: `<h1> سلام ${fullName}</h1>
