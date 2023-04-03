@@ -18,6 +18,9 @@ body {
   box-sizing: border-box;
   font-family: samim !important;
 }
+a{
+  text-decoration: none;
+}
 input[type=submit]{
   cursor:pointer
 }
@@ -41,8 +44,8 @@ input[type=submit]{
 .loading {
   margin: auto;
   border: 1px solid black;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 150;
   color: white;
   animation: loading 5s infinite;
 }

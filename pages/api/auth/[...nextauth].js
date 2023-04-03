@@ -4,8 +4,7 @@ import Customers from '../../../models/CustomerModel';
 import bcrypt from "bcrypt";
 import connectDB from "../../../utils/connectDB";
 
-
-export default NextAuth({
+export const authOptions = {
     session: {
         strategy: 'jwt',
     },
@@ -58,4 +57,5 @@ export default NextAuth({
         }),
     ],
     secret : process.env.NEXTAUTH_SECRET,
-});
+}
+export default NextAuth(authOptions)

@@ -2,7 +2,8 @@ import connectDB from '../../../utils/connectDB'
 import Orders from '../../../models/OrderModel'
 import Products from '../../../models/ProductModel'
 import {getSession} from "next-auth/react";
-
+import {authOptions} from '../auth/[...nextauth]'
+import { getServerSession } from 'next-auth';
 
 connectDB()
 
@@ -19,8 +20,8 @@ export default async (req, res) => {
 
 const getOrders = async (req, res) => {
     try {
-        const session = await getSession({ req });
-        if (!session){
+        const session = await getServerSession(req, res, authOptions)
+        if (!session || !session.user.isAdmin){
             return res.status(401).send('شما اجازه نداری');
         }
         let orders;
@@ -36,7 +37,7 @@ const getOrders = async (req, res) => {
 
 const createOrder = async (req, res) => {
     try {
-        const session = await getSession({ req });
+        const session = await getServerSession(req, res, authOptions)
         const { cart, total } = req.body
 
         const newOrder = new Orders({

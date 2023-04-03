@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Drawer,Box,IconButton,styled,Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 const DrawerMenu = () => {

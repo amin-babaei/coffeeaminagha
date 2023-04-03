@@ -1,3 +1,4 @@
+"use client"
 import {styled, Container, Typography, Box} from "@mui/material";
 
 const HeaderCustom = styled('header')(({theme}) => ({
@@ -22,7 +23,7 @@ const Header = () => {
                         کافی شاپ امین آقا
                     </Typography>
                     <Typography variant="h6" component="p" color="primary" lineHeight="2" textAlign="justify">
-                        شما اینجا هستید زیرا عاشق قهوه هستید، ما اینجا هستیم زیرا شما را دوست داریم.
+                        شما اینجا هستید زیرا عاشق قهوه هستید، ما اینجا هستیم زیرا شما را دوست داریم
                     </Typography>
                 </Box>
             </Container>

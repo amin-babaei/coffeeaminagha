@@ -1,6 +1,7 @@
 import connectDB from '../../../utils/connectDB'
 import Users from '../../../models/CustomerModel'
-import {getSession} from "next-auth/react";
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 
 connectDB()
 
@@ -14,7 +15,7 @@ export default async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const session = await getSession({ req });
+        const session = await getServerSession(req, res, authOptions);;
         if (!session || !session.user.root) {
             return res.status(401).send('شما ادمین نیستی');
         }

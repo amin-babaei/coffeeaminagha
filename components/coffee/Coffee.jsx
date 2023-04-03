@@ -1,3 +1,4 @@
+"use client"
 import {styled,Box,Typography,Container,Grid,Button } from "@mui/material"
 import Link from 'next/link'
 import CoffeeItem from "./CoffeeItem";
@@ -10,7 +11,6 @@ import CardSkelet from "../skeleton/CardSkelet";
     alignItems:"center",
  })
 const Coffee = ({coffees}) => {
-
   return (
     <Box marginTop="70px" mb={5} component="section">
       <WrapHeading>
@@ -30,7 +30,6 @@ const Coffee = ({coffees}) => {
             <CoffeeItem key={coffee._id} coffee={coffee}/>
         ))}
       </Grid>
-
         </Container>
     </Box>
   )

@@ -1,5 +1,6 @@
+"use client"
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/navigation'
 import Image from 'next/image';
 import {styled, Box, AppBar, Toolbar, Container, Button,} from "@mui/material";
 import Profile from "./Profile";
@@ -34,7 +35,7 @@ const Navbar = () => {
                         </Link>
                         <Link href="/coffees">
                             <Button variant="outlined" sx={{mx: "3px"}}
-                                    color={router.pathname === "/coffees" ? "secondary" : "primary"}>کافی ها</Button>
+                            color={router.pathname === "/coffees" ? "secondary" : "primary"}>کافی ها</Button>
                         </Link>
                     </MainMenu>
                     <Box sx={{cursor:"pointer"}}>

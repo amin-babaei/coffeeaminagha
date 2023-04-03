@@ -1,3 +1,4 @@
+"use client"
 import {Avatar, Badge, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip} from "@mui/material";
 import Link from "next/link";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
@@ -10,7 +11,7 @@ import {DataContext} from "../../store/GlobaStore";
 import {signOut, useSession} from "next-auth/react";
 
 const Profile = () => {
-    const {status,data:session} = useSession();
+    const {data:session} = useSession();
     const {state,dispatch} = useContext(DataContext);
     const {cart} = state;
     const [anchorEl, setAnchorEl] = useState(null);
@@ -43,9 +44,7 @@ const Profile = () => {
                     </Avatar>
                 </IconButton>
             </Tooltip>
-            {status === 'loading' ? (
-                <div>Loading...</div>
-            ) : session?.user && (
+            {session?.user && (
                 <Menu
                     anchorEl={anchorEl}
                     id="account-menu"
@@ -80,7 +79,7 @@ const Profile = () => {
                     transformOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
                 >
-                    <Link href="/profile">
+                    <Link href="/profile" style={{color:'black'}}>
                         <MenuItem sx={{paddingTop:'15px',paddingBottom:'15px'}}>
                             <ListItemIcon>
                                 <AssignmentIndIcon fontSize="small"/>
@@ -88,7 +87,7 @@ const Profile = () => {
                             پروفایل
                         </MenuItem>
                     </Link>
-                    <Link href="/cart">
+                    <Link href="/cart" style={{color:'black'}}>
                     <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}}>
                         <ListItemIcon>
                             <Badge badgeContent={!cart ? "0" : cart.length} color="secondary">
@@ -100,7 +99,7 @@ const Profile = () => {
                     </Link>
                     <Divider/>
                     {session.user.isAdmin && (
-                        <Link href="/admin">
+                        <Link href="/admin" style={{color:'black'}}>
                             <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}}>
                                 <ListItemIcon>
                                     <AdminPanelSettingsIcon fontSize="small"/>

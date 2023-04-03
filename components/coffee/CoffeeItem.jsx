@@ -1,12 +1,13 @@
+"use client"
 import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import Link from "next/link";
 import Stack from "@mui/material/Stack";
-import {useRouter} from "next/router";
 import ButtonLoad from "../../helper/decoration/ButtonLoad";
 import {common} from "@mui/material/colors";
+import { usePathname } from 'next/navigation';
 
 const CoffeeItem = ({coffee,deleted,loading}) => {
-    const router = useRouter()
+    const pathname = usePathname();
     return(
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{background:"rgba(255,255,255,0.3)"}} className="border">
@@ -27,12 +28,12 @@ const CoffeeItem = ({coffee,deleted,loading}) => {
                         <Button size="large" variant="outlined" color="secondary" sx={{width:"200px"}}>جزئیات</Button>
                     </Link>
                 </CardActions>
-            {router.pathname==='/admin/products' && (
+            {pathname==='/admin/products' && (
                 <Stack direction="row" justifyContent="space-between">
                     {loading ? <ButtonLoad loading={loading} message="منتظر بمانید..."/> :
-                    <Button variant="contained" color="error" fullWidth onClick={deleted}>حذف</Button>
+                    <Button variant="contained" color="error" sx={{width:'50%'}} onClick={deleted}>حذف</Button>
                     }
-                    <Link href={`products/create/${coffee._id}`} passHref>
+                    <Link href={`/admin/products/create/${coffee._id}`} passHref style={{flexGrow:'1'}}>
                         <Button variant="contained" color="warning" fullWidth>ویرایش</Button>
                     </Link>
                 </Stack>

@@ -44,7 +44,7 @@ const FormComment = ({productId}) => {
             <Box component="form" onSubmit={handleSubmit(handleSend)}>
                 <Box display="flex" alignItems="center" mt={5}>
                     <Image src="/images/profile.jpg" alt="profile" width={50} height={50}/>
-                    <Typography component="span" color="primary.dark" px={1}>{session.user.userName}</Typography>
+                    <Typography component="span" color="primary.dark" px={1}>{session?.user?.userName}</Typography>
                 </Box>
                 <Controller
                     defaultValue={''}

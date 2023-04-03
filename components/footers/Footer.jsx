@@ -1,4 +1,4 @@
-import {useState} from "react"
+"use client"
 import {styled, Typography} from "@mui/material"
 import {DateObject} from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
@@ -10,8 +10,7 @@ const FooterCustom = styled('footer')({
     textAlign: "center"
 })
 const Footer = () => {
-    const [date] = useState(
-        new DateObject({calendar: persian, locale: persian_fa}));
+    const date = new DateObject({calendar: persian, locale: persian_fa});
 
     return (
         <FooterCustom>

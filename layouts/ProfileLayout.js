@@ -1,3 +1,4 @@
+'use client'
 import {useContext} from "react";
 import {Container, Grid, ListItemIcon, Typography, Box} from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -5,29 +6,28 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Image from "next/image";
 import {signOut, useSession} from "next-auth/react";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import {DataContext} from "../store/GlobaStore";
 
 const ProfileLayout = ({children}) => {
-    const {status,data: session} = useSession();
+    const {data: session} = useSession();
     const router = useRouter();
     const {dispatch} = useContext(DataContext);
     const handleLogout = async () => {
-        await signOut({callbackUrl: '/login'});
-        dispatch({type: 'NOTIFY', payload: {success: 'با موفقیت خارج شدی'}})
+        localStorage.setItem("cart", "[]");
+        dispatch({ type: 'NOTIFY', payload: {success: 'با موفقیت خارج شدی'} })
+        return signOut({ callbackUrl: '/login' });
     }
     return (
         <Box marginTop="40px" minHeight="90vh" component="section">
             <Container maxWidth="lg">
                 <Grid container columnSpacing={{ xs: 0, sm: 5}} rowSpacing={5}>
-                    {status === 'loading' ? (
-                        <div>Loading...</div>
-                    ) : session?.user && (
+                    {session?.user && (
                             <Grid item xs={12} sm={4}>
                                 <Box component="nav" className="border">
                                     <Box display="flex" flexDirection="column" alignItems="center"
                                          borderBottom="1px solid rgba(255,255,255,0.3)" pb={2}>
-                                        <Image src="/images/profile.jpg" alt="profile" width={200} height={200}/>
+                                        <Image src="/images/profile.jpg" alt="profile" width={200} height={200} priority/>
                                         <Typography color="primary" variant="p" py={1}>{session.user.userName}</Typography>
                                         <Typography color="primary" variant="p">{session.user.email}</Typography>
                                     </Box>

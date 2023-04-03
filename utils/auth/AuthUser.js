@@ -1,35 +1,17 @@
-import {signIn, useSession} from "next-auth/react";
-import {useContext, useEffect} from "react";
-import {DataContext} from "../../store/GlobaStore";
-import {useRouter} from "next/router";
-import Head from "next/head";
-import {Box} from "@mui/material";
-import Image from "next/image";
+'use client'
+import {useSession} from "next-auth/react";
+import {useRouter} from "next/navigation";
+import {useEffect} from 'react'
 
 function AuthUser({children}) {
-    const {status, data: session} = useSession({
-        required:true,
-        onUnauthenticated(){
-            router.push('/login')
-        }
-    });
-    const {dispatch} = useContext(DataContext);
     const router = useRouter();
-    useEffect(() => {
-        if (status === "unauthenticated") {
-            return dispatch({type: 'NOTIFY', payload: {error: 'شما اجازه دسترسی به این صفحه را ندارید'}})
+    const {status, data: session} = useSession();
+    useEffect(() => { 
+        if (!session) {
+            router.replace('/login')
         }
-    }, [status]);
-    if (status === "loading") {
-        return <div>
-            <Head>
-                <title>درحال انتقال...</title>
-            </Head>
-            <Box height="100vh" width={"100%"} position="relative" display="flex" alignItems="center" justifyContent="center">
-                <Image src='/images/logo.png' width="100px" height="100px" layout="fixed" className="loading"/>
-            </Box>
-        </div>
-    }
+    },[router, session])
+    
     return children
 }
 export default AuthUser;

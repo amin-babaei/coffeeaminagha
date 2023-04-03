@@ -1,4 +1,5 @@
-import * as React from 'react';
+'use client'
+import { useState } from 'react';
 import { styled, } from '@mui/material/styles';
 import {CssBaseline,Box,Toolbar,List,Divider,Container,AppBar,ListItemButton,ListItemIcon,ListItemText,useTheme} from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
@@ -11,11 +12,11 @@ import FactCheckIcon from '@mui/icons-material/FactCheck';
 import HomeIcon from '@mui/icons-material/Home';
 import Image from "next/image";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import Notify from "../helper/decoration/Notify";
 import CommentIcon from '@mui/icons-material/Comment';
-const drawerWidth = 240;
 
+const drawerWidth = 240;
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
@@ -43,7 +44,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 const AdminLayout = ({children}) => {
     const theme = useTheme()
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const router = useRouter();
     const toggleDrawer = () => {
         setOpen(!open);
@@ -84,7 +85,7 @@ const AdminLayout = ({children}) => {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        <Link href="/admin/orders">
+                        <Link href="/admin/orders" style={{color:'white'}}>
                             <ListItemButton>
                                 <ListItemIcon sx={{p:1}}>
                                     <FactCheckIcon color={router.pathname==="/admin/orders"?"secondary":"primary"}/>
@@ -93,7 +94,7 @@ const AdminLayout = ({children}) => {
                             </ListItemButton>
                         </Link>
                         <Divider color="white"/>
-                        <Link href="/admin/products">
+                        <Link href="/admin/products" style={{color:'white'}}>
                             <ListItemButton>
                                 <ListItemIcon sx={{p:1}}>
                                     <ShoppingCartIcon color={router.pathname==="/admin/products"?"secondary":"primary"}/>
@@ -102,7 +103,7 @@ const AdminLayout = ({children}) => {
                             </ListItemButton>
                         </Link>
                         <Divider color="white"/>
-                        <Link href="/admin/customers">
+                        <Link href="/admin/customers" style={{color:'white'}}>
                             <ListItemButton>
                                 <ListItemIcon sx={{p:1}}>
                                     <PeopleIcon color={router.pathname==="/admin/customers"?"secondary":"primary"}/>
@@ -111,7 +112,7 @@ const AdminLayout = ({children}) => {
                             </ListItemButton>
                         </Link>
                         <Divider color="white"/>
-                        <Link href="/admin/comments">
+                        <Link href="/admin/comments" style={{color:'white'}}>
                             <ListItemButton>
                                 <ListItemIcon sx={{p:1}}>
                                     <CommentIcon color={router.pathname==="/admin/comments"?"secondary":"primary"}/>
@@ -120,7 +121,7 @@ const AdminLayout = ({children}) => {
                             </ListItemButton>
                         </Link>
                         <Divider color="white"/>
-                        <Link href="/">
+                        <Link href="/" style={{color:'white'}}>
                             <ListItemButton>
                                 <ListItemIcon sx={{p:1}}>
                                     <HomeIcon color="primary"/>
