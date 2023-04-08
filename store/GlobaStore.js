@@ -12,14 +12,13 @@ export const DataProvider = ({children}) => {
     const {cart} = state;
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }, [cart])
-
-    useEffect(() => {
-        const cart = localStorage.getItem("cart")
-        dispatch({type: "ADD_CART", payload: JSON.parse(cart)})
+        const cart = JSON.parse(localStorage.getItem('cart'))
+        if(cart) dispatch({ type: 'ADD_CART', payload: cart })
     }, [])
 
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart])
     return (
         <DataContext.Provider value={{state, dispatch}}>
             {children}
