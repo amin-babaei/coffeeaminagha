@@ -27,12 +27,8 @@ const forgotPassword = async (req, res) => {
         sendEmail(
             customer.email,
             customer.userName,
-            "فراموشی رمز عبور",
-            `
-        جهت تغییر رمز عبور فعلی رو لینک زیر کلیک کنید
-        <br/>
-        <a href="${resetLink}">لینک تغییر رمز عبور</a>
-    `
+            resetLink
+    
         );
 
         return res.status(200).json({ msg: "ایمیل برای شما ارسال شد" , ok:true})
