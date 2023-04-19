@@ -24,11 +24,10 @@ const forgotPassword = async (req, res) => {
         });
         const resetLink = `${process.env.BASE_URL}/reset-password/${token}`;
 
-        sendEmail(
+        await sendEmail(
             customer.email,
             customer.userName,
             resetLink
-    
         );
 
         return res.status(200).json({ msg: "ایمیل برای شما ارسال شد" , ok:true})
