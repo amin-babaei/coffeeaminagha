@@ -1,17 +1,15 @@
 import Footer from "../../components/footers/Footer";
 import Navbar from "../../components/menu/Navbar";
+import AuthUser from "../../utils/auth/AuthUser";
 
-export const metadata = {
-  title: 'درباره ما',
-}
 export default function LayoutAbout({ children }) {
 
   return (
-    <>
+    <AuthUser>
       <Navbar />
-      {children}
+        {children}
       <Footer />
-    </>
+    </AuthUser>
 
   );
 }

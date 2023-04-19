@@ -1,7 +1,7 @@
-import connectDB from "../../../utils/connectDB";
-import Product from '../../../models/ProductModel'
-import CustomerModel from '../../../models/CustomerModel'
-import CoffeeDetail from '../../../components/pages/CoffeeDetail'
+import connectDB from "../../../../utils/connectDB";
+import Product from '../../../../models/ProductModel'
+import CustomerModel from '../../../../models/CustomerModel'
+import CoffeeDetail from '../../../../components/pages/coffee/CoffeeDetail'
 
 export async function generateMetadata({ params }) {
   return {

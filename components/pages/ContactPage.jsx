@@ -12,7 +12,7 @@ import SendIcon from "@mui/icons-material/Send";
 import {DataContext} from "../../store/GlobaStore";
 import ButtonLoad from "../../helper/decoration/ButtonLoad";
 
-export default function Contact() {
+export default function ContactPage() {
     const {control, register,reset, handleSubmit,formState, formState: {errors}} = useForm();
     const {state,dispatch} = useContext(DataContext)
     const {loading} = state;

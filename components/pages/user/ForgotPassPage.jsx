@@ -4,11 +4,11 @@ import EmailIcon from "@mui/icons-material/Email";
 import {Controller, useForm} from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
-import {postData} from "../../services/fetchData";
+import {postData} from "../../../services/fetchData";
 import {useContext} from "react";
-import {DataContext} from "../../store/GlobaStore";
-import ButtonLoad from "../../helper/decoration/ButtonLoad";
-import Notify from "../../helper/decoration/Notify";
+import {DataContext} from "../../../store/GlobaStore";
+import ButtonLoad from "../../../helper/decoration/ButtonLoad";
+import Notify from "../../../helper/decoration/Notify";
 
 const Wrapper = styled(Box)(({theme}) => ({
         width:"100%",

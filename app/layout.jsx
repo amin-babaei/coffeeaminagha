@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import Providers from "./Providers";
-import AuthUser from '../utils/auth/AuthUser'
 
 export const metadata = {
   icons: {
@@ -12,9 +11,7 @@ export default async function RootLayout({ children }) {
     <html lang="fa-IR" dir="rtl">
       <body>
           <Providers>
-            <AuthUser>
               {children}
-            </AuthUser>
           </Providers>
       </body>
     </html>

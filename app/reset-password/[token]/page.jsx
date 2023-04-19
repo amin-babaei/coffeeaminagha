@@ -1,4 +1,4 @@
-import ResetPasswordPage from "../../../components/pages/ResetPassPage";
+import ResetPasswordPage from "../../../components/pages/user/ResetPassPage";
 
 export const metadata = {
     title: 'تغییر رمز عبور',

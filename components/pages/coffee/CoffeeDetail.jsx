@@ -2,10 +2,10 @@
 import { Box, Breadcrumbs, Button, Container, Grid, styled, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { DataContext } from "../../store/GlobaStore";
+import { DataContext } from "../../../store/GlobaStore";
 import { useContext, useState } from "react";
-import { addToCart } from "../../store/Actions";
-import FormComment from '../coffee/FormComment'
+import { addToCart } from "../../../store/Actions";
+import FormComment from '../../coffee/FormComment'
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";

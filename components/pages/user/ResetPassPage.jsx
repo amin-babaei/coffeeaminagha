@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import LockIcon from "@mui/icons-material/Lock";
 import {useContext} from "react";
-import {DataContext} from "../../store/GlobaStore";
-import {patchData} from "../../services/fetchData";
-import ButtonLoad from "../../helper/decoration/ButtonLoad";
+import {DataContext} from "../../../store/GlobaStore";
+import {patchData} from "../../../services/fetchData";
+import ButtonLoad from "../../../helper/decoration/ButtonLoad";
 import {useRouter} from "next/navigation";
-import Notify from "../../helper/decoration/Notify";
+import Notify from "../../../helper/decoration/Notify";
 
 const Wrapper = styled(Box)(({theme}) => ({
     width:"100%",

@@ -1,4 +1,4 @@
-import ForgotPassPage from "../../components/pages/ForgotPassPage";
+import ForgotPassPage from "../../components/pages/user/ForgotPassPage";
 
 export const metadata = {
     title: 'فراموشی رمز عبور',

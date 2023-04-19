@@ -1,8 +1,8 @@
-import Orders from "../../../../models/OrderModel";
-import connectDB from "../../../../utils/connectDB";
-import OrderDetail from "../../../../components/orders/OrderDetail";
+import Orders from "../../../../../models/OrderModel";
+import connectDB from "../../../../../utils/connectDB";
+import OrderDetail from "../../../../../components/orders/OrderDetail";
 import { getServerSession } from "next-auth";
-import { authOptions } from '../../../../pages/api/auth/[...nextauth]'
+import { authOptions } from '../../../../../pages/api/auth/[...nextauth]'
 
 const getOrders = async (session) => {
   await connectDB()

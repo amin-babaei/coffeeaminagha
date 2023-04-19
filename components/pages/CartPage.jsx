@@ -1,5 +1,5 @@
 'use client'
-import {Box, Button, Container, Grid, Icon, Typography} from "@mui/material";
+import {Box, Button, Container, Grid, Typography} from "@mui/material";
 import Image from "next/image";
 import {DataContext} from "../../store/GlobaStore";
 import {useContext} from "react";
@@ -11,7 +11,7 @@ import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import {getData, postData} from "../../services/fetchData";
 
-const Cart = () => {
+const CartPage = () => {
     const{data:session} = useSession()
     const {state, dispatch} = useContext(DataContext);
     const {cart,orders,loading} = state;
@@ -114,4 +114,4 @@ const Cart = () => {
         </Box>
     )
 }
-export default Cart;
+export default CartPage;

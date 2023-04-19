@@ -8,12 +8,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import PersonIcon from '@mui/icons-material/Person';
 import PhoneIcon from '@mui/icons-material/Phone';
-import FooterSignup from "../footers/FooterSignup";
-import { DataContext } from "../../store/GlobaStore";
-import Notify from "../../helper/decoration/Notify";
+import FooterSignup from "../../footers/FooterSignup";
+import { DataContext } from "../../../store/GlobaStore";
+import Notify from "../../../helper/decoration/Notify";
 import { useRouter } from "next/navigation";
-import ButtonLoad from "../../helper/decoration/ButtonLoad";
-import { postData } from "../../services/fetchData";
+import ButtonLoad from "../../../helper/decoration/ButtonLoad";
+import { postData } from "../../../services/fetchData";
 
 const RegisterPage = () => {
     const { state, dispatch } = useContext(DataContext);

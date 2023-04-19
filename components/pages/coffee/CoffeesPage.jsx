@@ -1,13 +1,13 @@
 'use client'
 import { Box, Container, Grid, Typography } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
-import PaginationComponent from '../Pagination'
-import CardSkelet from '../skeleton/CardSkelet'
-import CoffeeItem from '../coffee/CoffeeItem'
-import usePaginate from "../../helper/hooks/usePaginate";
-import Searchbar from '../coffee/Searchbar'
-import { DataContext } from '../../store/GlobaStore'
-import { paginate } from "../../utils/paginate";
+import PaginationComponent from '../../Pagination'
+import CardSkelet from '../../skeleton/CardSkelet'
+import CoffeeItem from '../../coffee/CoffeeItem'
+import usePaginate from "../../../helper/hooks/usePaginate";
+import Searchbar from '../../coffee/Searchbar'
+import { DataContext } from '../../../store/GlobaStore'
+import { paginate } from "../../../utils/paginate";
 import { debounce } from 'lodash'
 
 function CoffeesPage({ products }) {

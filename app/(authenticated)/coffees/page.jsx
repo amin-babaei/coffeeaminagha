@@ -1,6 +1,6 @@
-import Products from "../../models/ProductModel";
-import connectDB from "../../utils/connectDB";
-import CoffeesPage from "../../components/pages/CoffeesPage";
+import Products from "../../../models/ProductModel";
+import connectDB from "../../../utils/connectDB";
+import CoffeesPage from "../../../components/pages/coffee/CoffeesPage";
 
 export const metadata = {
     title: 'کافی ها',

@@ -5,12 +5,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from '@mui/icons-material/Lock';
 import Image from "next/image";
 import Link from 'next/link'
-import FooterSignup from "../footers/FooterSignup"
-import {DataContext} from "../../store/GlobaStore";
+import FooterSignup from "../../footers/FooterSignup"
+import {DataContext} from "../../../store/GlobaStore";
 import {useContext, useEffect} from "react";
 import { useRouter } from 'next/navigation'
-import Notify from "../../helper/decoration/Notify";
-import ButtonLoad from "../../helper/decoration/ButtonLoad";
+import Notify from "../../../helper/decoration/Notify";
+import ButtonLoad from "../../../helper/decoration/ButtonLoad";
 import {signIn, useSession} from "next-auth/react";
 
 const LoginPage = () => {

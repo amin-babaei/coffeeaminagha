@@ -2,7 +2,7 @@
 import { Container, Typography, Box, Grid } from "@mui/material";
 import Image from "next/image";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <Box minHeight="90vh" marginTop="40px" component="section">
       <Container maxWidth="lg">
@@ -35,4 +35,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

@@ -1,4 +1,4 @@
-import RegisterPage from "../../components/pages/RegisterPage";
+import RegisterPage from "../../components/pages/user/RegisterPage";
 
 export const metadata = {
     title: 'ثبت نام',

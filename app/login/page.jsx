@@ -1,4 +1,4 @@
-import LoginPage from '../../components/pages/LoginPage'
+import LoginPage from '../../components/pages/user/LoginPage'
 
 export const metadata = {
   title: 'ورود به حساب کاربری',
