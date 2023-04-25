@@ -80,6 +80,7 @@ const LoginPage = () => {
                             render={({field}) => {
                                 return (
                                     <TextField
+                                        {...field}
                                         label="ایمیل"
                                         {...register("email", {
                                             required: "این فیلد اجباری است",
@@ -118,6 +119,7 @@ const LoginPage = () => {
                             render={({field}) => {
                                 return (
                                     <TextField
+                                        {...field}
                                         label="رمز عبور"
                                         {...register("password", {
                                             required: "این فیلد اجباری است",
@@ -161,19 +163,13 @@ const LoginPage = () => {
                                 وارد شوید
                             </Button>
                         )}
-                            <Link href="/register">
-                                <Typography color="primary" fontSize='15px'
-                                            sx={{cursor: "pointer", textDecoration: "underline"}}>
-                                    حساب ندارم ! میخام بسازم
-                                </Typography>
+                            <Link href="/register" style={{color:'white',textDecoration:'underline'}}>
+                                حساب ندارم ! میخام بسازم
                             </Link>
                             <br/>
                             <br/>
-                            <Link href="/forgot-password">
-                                <Typography color="secondary" fontSize='15px'
-                                            sx={{cursor: "pointer"}}>
-                                    رمزعبور خود را فراموش کردید؟
-                                </Typography>
+                            <Link href="/forgot-password" style={{color:'white'}}>
+                                رمزعبور خود را فراموش کردید؟
                             </Link>
                     </Box>
                     <FooterSignup/>
