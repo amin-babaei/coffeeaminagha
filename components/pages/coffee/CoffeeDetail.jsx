@@ -71,11 +71,19 @@ const CoffeeDetail = ({ product }) => {
                                 maxWidth="400px">{product.description}</Typography>
                             <Typography component="p" variant="h6" letterSpacing='1px' mt={5}
                                 fontWeight="bold"> قیمت: {product.price} تومان</Typography>
+                                {cart.some(p => p._id === product._id) ? (
+                                    <Link href='cart'>
+                                        <ButtonPrice variant="outlined" color={"secondary"}>
+                                            تسویه حساب
+                                        </ButtonPrice>
+                            </Link>
+                                ) : (
                             <ButtonPrice variant="outlined" color={"secondary"}
                                 disabled={product.inStock === 0}
                                 onClick={addedCart}>
                                 اضافه به سبد خرید
                             </ButtonPrice>
+                                )}
                             <Typography color="error" my={1} component="p" fontSize="14px">تعداد موجود در انبار
                                 : {product.inStock}</Typography>
                         </Box>
