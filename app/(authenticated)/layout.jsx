@@ -1,15 +1,20 @@
+import { getServerSession } from "next-auth";
 import Footer from "../../components/footers/Footer";
 import Navbar from "../../components/menu/Navbar";
-import AuthUser from "../../utils/auth/AuthUser";
+import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import { redirect } from "next/navigation";
 
-export default function LayoutAbout({ children }) {
-
+export default async function LayoutAbout({ children }) {
+  const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect('/login');
+  }
   return (
-    <AuthUser>
+    <>
       <Navbar />
         {children}
       <Footer />
-    </AuthUser>
+    </>
 
   );
 }
