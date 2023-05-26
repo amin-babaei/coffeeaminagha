@@ -4,6 +4,7 @@ import MopedIcon from "@mui/icons-material/Moped";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import {useEffect, useState} from "react";
 import ButtonLoad from "../helper/decoration/ButtonLoad";
+import { priceNumber } from "../utils/priceNumber";
 
 const BuyCart = ({cart, loading, handlePayment}) => {
     const [check, setCheck] = useState(false)
@@ -22,7 +23,7 @@ const BuyCart = ({cart, loading, handlePayment}) => {
     return (
         <Box p={1} mb={2} className='border'>
             <Typography variant="h6" component="h3" color="primary" borderBottom="1px solid" py={1}>قیمت کل :
-                {total} تومان
+                {priceNumber(total)} تومان
             </Typography>
             <Box display="flex" alignItems="center">
                 <GppGoodIcon color="warning"/>

@@ -9,6 +9,7 @@ import FormComment from '../../coffee/FormComment'
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";
+import { priceNumber } from "../../../utils/priceNumber";
 
 const ButtonPrice = styled(Button)(({ theme }) => ({
     margin: "20px 0 2px 0",
@@ -70,7 +71,7 @@ const CoffeeDetail = ({ product }) => {
                             <Typography component="p" lineHeight={2} align="justify" color="primary.dark" my={3}
                                 maxWidth="400px">{product.description}</Typography>
                             <Typography component="p" variant="h6" letterSpacing='1px' mt={5}
-                                fontWeight="bold"> قیمت: {product.price} تومان</Typography>
+                                fontWeight="bold"> قیمت: {priceNumber(product.price)} تومان</Typography>
                                 {cart.some(p => p._id === product._id) ? (
                                     <Link href='cart'>
                                         <ButtonPrice variant="outlined" color={"secondary"}>

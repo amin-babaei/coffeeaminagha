@@ -7,6 +7,7 @@ import DatePicker from "react-multi-date-picker"
 import persian_fa from "react-date-object/locales/persian_fa"
 import persian from "react-date-object/calendars/persian"
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
+import { priceNumber } from "../../utils/priceNumber";
 
 const OrderDetail = ({ orders, id }) => {
     const [orderDetail, setOrderDetail] = useState([])
@@ -45,13 +46,13 @@ const OrderDetail = ({ orders, id }) => {
                             key={item._id}>
                             <Typography color="primary" component="p">{item.title.split("-").join(" ")}</Typography>
                             <Typography color="primary">{item.quantity} عدد</Typography>
-                            <Typography color="primary">{item.price} تومان</Typography>
+                            <Typography color="primary">{priceNumber(item.price)} تومان</Typography>
                         </Box>
                     ))
                 }
                 {orderDetail && (
                     <Box mt={5}>
-                        <Typography color="primary">جمع کل : {orderDetail.total} تومان</Typography>
+                        <Typography color="primary">جمع کل : {priceNumber(orderDetail.total)} تومان</Typography>
                         <Box color="white" my={2}>تاریخ سفارش :
                             <DatePicker
                                 containerClassName="custom-container"

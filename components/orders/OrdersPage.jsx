@@ -4,6 +4,7 @@ import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import Link from "next/link";
+import { priceNumber } from '../../utils/priceNumber';
 
 export default function OrderPage({orders}) {
 
@@ -35,7 +36,7 @@ export default function OrderPage({orders}) {
                                         ))}
                                 </Link>
                             </TableCell>
-                            <TableCell align="center">{order.total} تومان</TableCell>
+                            <TableCell align="center">{priceNumber(order.total)} تومان</TableCell>
                             <TableCell align="center"><DatePicker
                                 containerClassName="custom-container"
                                 value={order.createdAt}

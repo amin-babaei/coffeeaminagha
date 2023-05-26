@@ -10,6 +10,7 @@ import BuyCart from "../../components/BuyCart";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import {getData, postData} from "../../services/fetchData";
+import { priceNumber } from "../../utils/priceNumber";
 
 const CartPage = () => {
     const{data:session} = useSession()
@@ -83,7 +84,7 @@ const CartPage = () => {
                                         <Typography color="primary" variant="h5"
                                                     component="h3">{product.title.split("-").join(" ")}</Typography>
                                         <Typography color="primary" variant="h6" component="p" my={3}>قیمت
-                                            : {product.price} تومان</Typography>
+                                            : {priceNumber(product.price)} تومان</Typography>
                                         <Box display="flex" alignItems="center">
                                             <Button disabled={product.quantity === product.inStock} sx={{minWidth:"0",p:0}}>
                                                 <AddCircleIcon color="success" sx={{fontSize: "35px",cursor:"pointer"}}
