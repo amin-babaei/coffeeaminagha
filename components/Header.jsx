@@ -18,11 +18,11 @@ const Header = () => {
         <HeaderCustom>
             <Container maxWidth="lg">
                 <Box sx={{maxWidth: "30rem", marginBottom: "10rem"}}>
-                    <Typography variant="h3" component="h1" color="secondary" fontSize={{xs:"2.8rem"}}
-                                sx={{marginBottom: "4rem", fontWeight: 900}}>
+                    <Typography variant="h3" component="h1" color="secondary"
+                                sx={{marginBottom: "4rem", fontWeight: 900, fontSize: {xs:'2rem',sm:'2.7rem'}}}>
                         کافی شاپ امین آقا
                     </Typography>
-                    <Typography variant="h6" component="p" color="primary" lineHeight="2" textAlign="justify">
+                    <Typography variant="h6" component="p" color="primary" lineHeight="2" textAlign="justify" fontSize={"1.2rem"}>
                         شما اینجا هستید زیرا عاشق قهوه هستید، ما اینجا هستیم زیرا شما را دوست داریم
                     </Typography>
                 </Box>
