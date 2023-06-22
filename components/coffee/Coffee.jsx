@@ -14,7 +14,7 @@ const Coffee = ({coffees}) => {
   return (
     <Box marginTop="70px" mb={5} component="section">
       <WrapHeading>
-        <Typography align="center" color="secondary" variant="h4" component="h3" sx={{fontSize: {xs:'2rem',sm:'2.2rem'}}}>
+        <Typography align="center" color="secondary" variant="h2" component="h3">
             منوی کافی شاپ
         </Typography>
         <Link href="/coffees">

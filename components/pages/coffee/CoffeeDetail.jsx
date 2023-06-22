@@ -39,7 +39,7 @@ const CoffeeDetail = ({ product }) => {
                     <Link href="/coffees">
                         <Button variant="text" color="primary" sx={{ cursor: "pointer" }}>محصولات</Button>
                     </Link>
-                    <Typography color="primary.dark">{product.title.split('-').join(" ")}</Typography>
+                    <Typography variant="body2" color="primary.dark">{product.title.split('-').join(" ")}</Typography>
                 </Breadcrumbs>
                 <Grid container rowSpacing={{ xs: 5, md: 0 }} columnSpacing={{ sm: 5 }}>
                     <Grid item xs={12} sm={6}>
@@ -67,9 +67,10 @@ const CoffeeDetail = ({ product }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Box color="primary.main">
-                            <Typography fontSize="1.7rem" component="h2" fontWeight='bold'>{product.title.split('-').join(" ")}</Typography>
-                            <Typography component="p" lineHeight={2} align="justify" color="primary.dark" my={3}
-                                maxWidth="400px">{product.description}</Typography>
+                            <Typography variant="h2" component="h2" fontWeight='bold'>{product.title.split('-').join(" ")}</Typography>
+                            <Typography variant="body1" component="p" color="primary.dark" lineHeight="2.5" align="justify" my={3}
+                                >{product.description}
+                            </Typography>
                             <Typography component="p" variant="h6" letterSpacing='1px' mt={5}
                                 fontWeight="bold"> قیمت: {priceNumber(product.price)} تومان</Typography>
                                 {cart.some(p => p._id === product._id) ? (
@@ -104,9 +105,9 @@ const CoffeeDetail = ({ product }) => {
                                 borderRadius="5px">
                                 <Box display="flex" alignItems="center">
                                     <Image src="/images/profile.jpg" alt="profile" width={50} height={50} />
-                                    <Typography component="span" color="primary.dark" px={1}>{comment.user.userName} |</Typography>
+                                    <Typography variant="body2" component="span" color="primary.dark" px={1}>{comment.user.userName} |</Typography>
 
-                                    <Typography component="span" color="primary.dark">
+                                    <Typography variant="body2" component="span" color="primary.dark">
                                         ارسال شده در
                                         <DatePicker
                                             containerClassName="custom-container"
@@ -116,7 +117,7 @@ const CoffeeDetail = ({ product }) => {
                                             readOnly />
                                     </Typography>
                                 </Box>
-                                <Typography component="p" color="primary" my={2} lineHeight="3">{comment.text}</Typography>
+                                <Typography variant="body1" component="p" color="primary" my={2} lineHeight="3">{comment.text}</Typography>
                             </Box>
                         ) : null
                     ))}

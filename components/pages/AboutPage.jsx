@@ -8,11 +8,11 @@ const AboutPage = () => {
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} sm={6}>
-            <Typography variant="h5" component="h2" color="secondary">
+            <Typography variant="h2" component="h2" color="secondary">
               درباره کافی شاپ آقا امین
             </Typography>
             <Typography
-              variant="h6"
+              variant="subtitle1"
               component="p"
               color="primary"
               lineHeight="2.5"

@@ -33,7 +33,7 @@ const OrderDetail = ({ orders, id }) => {
                         ml: { xs: '0', sm: '10px' }
                     }} />
                 </Box>
-                <Typography fontSize="16px" component="p" color="primary.dark" my={4} align="center">از اینکه مجموعه
+                <Typography variant="body1" component="p" color="primary.dark" my={4} align="center">از اینکه مجموعه
                     ما
                     را انتخاب کردید سپاس گذاریم.
                 </Typography>

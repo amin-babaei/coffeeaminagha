@@ -74,9 +74,9 @@ const FormComment = ({productId}) => {
                     }}
                 >
                 </Controller>
-                <Typography color="primary.dark" component="p" fontSize={"14px"}>کامنت شما بعد از تایید ادمین سایت به نمایش گذاشته می شود</Typography>
+                <Typography color="primary.dark" component="p" variant="body2">کامنت شما بعد از تایید ادمین سایت به نمایش گذاشته می شود</Typography>
                 {loading ? <ButtonLoad loading={loading} message="درحال ارسال ..."/> :
-                <Button type="submit" variant="contained" color="secondary" sx={{my:2}}>ارسال نظر</Button>
+                <Button type="submit" variant="contained" color="secondary" sx={{my:2,fontWeight:'bold'}}>ارسال نظر</Button>
                 }
             </Box>
         </>

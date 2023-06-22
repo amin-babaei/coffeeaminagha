@@ -12,6 +12,30 @@ export const theme= createTheme({
             main: '#fff',
         },
     },
+   typography:{
+    h1:{
+        '@media (min-width:600px)': {
+            fontSize: '2.7rem',
+        },
+        '@media (max-width:600px)': {
+            fontSize: '2rem',
+        },
+    },
+    h2:{
+        '@media (min-width:600px)': {
+            fontSize: '2.1rem',
+        },
+        '@media (max-width:600px)': {
+            fontSize: '2rem',
+        },
+    },
+    subtitle1:{
+        fontSize: '1.15rem',
+    },
+    body2:{
+        fontSize: '14px',
+    },
+   },
     components: {
         MuiButton: {
             styleOverrides: {
