@@ -34,5 +34,5 @@ Link Website : https://coffeeaminagha.vercel.app
 
 ## Contact ME
 
-- Email: [aminbabaei_dev@yahoo.com](mailto:aminbabaei_dev@yahoo.com)
-- Instagram: [@aminnymous](https://www.instagram.com/aminnymous)
+- Email : [aminbabaei_dev@yahoo.com](mailto:aminbabaei_dev@yahoo.com)
+- Linkedin : https://www.linkedin.com/in/amin-babaei
