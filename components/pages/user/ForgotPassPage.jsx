@@ -31,12 +31,9 @@ const ForgotPassPage = () => {
             if (res.ok === true){
                 dispatch({type: "LOADING", payload: false});
                 dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            }else{
-                dispatch({type: "LOADING", payload: false});
-                dispatch({type: 'NOTIFY', payload: {error: res.err}})
             }
         } catch (err) {
-            console.log(err)
+            dispatch({type: 'NOTIFY', payload: {error: 'درحال حاضر امکان تغییر رمز عبور فراهم نیست'}})
             dispatch({type: "LOADING", payload: false});
         }
     }
