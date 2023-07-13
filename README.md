@@ -1,5 +1,5 @@
-<h1 align="center">Coffee Amin Agha</h1>
-
+<h1>Coffee Amin Agha</h1>
+<br/>
 <h2 align="center">🖥️ Tech Stack</h2>
 
 <p align="center">
