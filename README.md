@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Next.Js-3bc7bd?logo=next.js&style=for-the-badge&logoColor=black" alt="next-js" />
   <img alt="material-ui" src="https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white"/>
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb" />
-  <img alt="Express js" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
 </p>
 
 <br/>
