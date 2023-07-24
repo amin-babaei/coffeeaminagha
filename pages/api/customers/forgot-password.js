@@ -33,6 +33,6 @@ const forgotPassword = async (req, res) => {
         return res.status(200).json({ msg: "ایمیل برای شما ارسال شد" , ok:true})
 
     } catch (err) {
-        return res.status(500).json({err: err.message})
+        return res.status(500).json({err: 'درحال حاضر امکان تغییر رمز عبور فراهم نیست'})
     }
 }

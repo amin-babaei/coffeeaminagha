@@ -28,12 +28,15 @@ const ForgotPassPage = () => {
         dispatch({type: "LOADING", payload: true});
         try {
             const res = await postData("customers/forgot-password", data);
-            if (res.ok === true){
+            if (res.ok){
                 dispatch({type: "LOADING", payload: false});
                 dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+            }else{
+                dispatch({type: "LOADING", payload: false});
+                dispatch({type: 'NOTIFY', payload: {error: res.err}})
             }
-        } catch (err) {
-            dispatch({type: 'NOTIFY', payload: {error: 'درحال حاضر امکان تغییر رمز عبور فراهم نیست'}})
+        } catch {
+            dispatch({ type: "NOTIFY",payload: { error: 'درحال حاضر امکان تغییر رمز عبور فراهم نیست' }});
             dispatch({type: "LOADING", payload: false});
         }
     }
