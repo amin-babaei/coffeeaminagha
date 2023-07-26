@@ -1,7 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../../utils/connectDB'
 import Products from '../../../../models/ProductModel'
-import {getSession} from "next-auth/react";
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../../auth/[...nextauth]';
 
 
 connectDB()
@@ -15,8 +16,8 @@ export default async (req, res) => {
 }
 const createComment = async (req, res) => {
     try {
-        const session = await getSession({ req });
-        const { productId } = req.query;
+        const session = await getServerSession(req, res, authOptions);
+        const { productId } = req.query;     
 
         const product = await Products.findById(productId)
         if(!product) return res.status(400).json({err: 'این محصول وجود ندارد'})

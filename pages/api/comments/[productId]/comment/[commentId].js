@@ -1,7 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../../../utils/connectDB'
 import Products from '../../../../../models/ProductModel'
-import {getSession} from "next-auth/react";
+import { authOptions } from '../../../auth/[...nextauth]';
+import { getServerSession } from 'next-auth';
 
 connectDB()
 
@@ -17,7 +18,7 @@ export default async (req, res) => {
 }
 const verifyComment = async(req, res) => {
     try {
-        const session = await getSession({ req });
+        const session = await getServerSession(req, res, authOptions);
         if (!session || !session.user.root) {
             return res.status(401).send('شما ادمین نیستی');
         }
@@ -34,7 +35,7 @@ const verifyComment = async(req, res) => {
 }
 const deleteComment = async(req, res) => {
     try {
-        const session = await getSession({ req });
+        const session = await getServerSession(req, res, authOptions);
         if (!session || !session.user.root) {
             return res.status(401).send('شما ادمین نیستی');
         }
