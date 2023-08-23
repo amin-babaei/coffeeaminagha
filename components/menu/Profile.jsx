@@ -16,7 +16,7 @@ const Profile = () => {
     const {cart} = state;
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-
+    console.log(cart);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -90,7 +90,7 @@ const Profile = () => {
                     <Link href="/cart" style={{color:'black'}}>
                     <MenuItem sx={{paddingTop:'12px',paddingBottom:'12px'}}>
                         <ListItemIcon>
-                            <Badge badgeContent={!cart ? "0" : cart.length} color="secondary">
+                            <Badge badgeContent={cart?.userCart?.length} color="secondary">
                                 <AddShoppingCartIcon fontSize="small"/>
                             </Badge>
                         </ListItemIcon>
