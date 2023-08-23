@@ -60,8 +60,8 @@ export default function Orders() {
                                         <TableCell align="center">{order.user.address}</TableCell>
                                         <TableCell align="center">
                                             {order.cart.map(item => (
-                                                <Typography key={item._id}
-                                                            fontSize="14px">{item.title.split("-").join(" ")}({item.quantity})</Typography>
+                                                <Typography key={item.productDetail._id}
+                                                            fontSize="14px">{item.productDetail.title.split("-").join(" ")}({item.quantity})</Typography>
                                             ))}
                                         </TableCell>
                                         <TableCell align="center">{order.total} تومان</TableCell>

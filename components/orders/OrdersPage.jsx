@@ -28,11 +28,11 @@ export default function OrderPage({orders}) {
                             <TableCell align="center">
                                 <Link href={`/profile/orders/${order._id}`} style={{color:'white'}}>
                                         {order.cart.map(item => (
-                                            <Typography key={item._id}
+                                            <Typography key={item.productDetail._id}
                                                 fontSize="14px" sx={{
                                                 cursor: "pointer",
                                                 textDecoration: "underline",
-                                            }}>{item.title.split("-").join(" ")}({item.quantity})</Typography>
+                                            }}>{item.productDetail.title.split("-").join(" ")}({item.quantity})</Typography>
                                         ))}
                                 </Link>
                             </TableCell>

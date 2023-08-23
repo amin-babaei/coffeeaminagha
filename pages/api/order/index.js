@@ -38,13 +38,13 @@ const getOrders = async (req, res) => {
 const createOrder = async (req, res) => {
     try {
         const session = await getServerSession(req, res, authOptions)
-        const { cart, total } = req.body
+        const { userCart, totalPrice } = req.body
 
         const newOrder = new Orders({
-            user: session.user, cart, total
+            user: session.user, cart: userCart, total: totalPrice
         })
 
-        cart.filter(item => {
+        userCart.filter(item => {
             return sold(item._id, item.quantity, item.inStock, item.sold)
         })
 

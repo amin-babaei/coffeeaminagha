@@ -43,10 +43,10 @@ const OrderDetail = ({ orders, id }) => {
                     orderDetail.cart.map(item => (
                         <Box display="flex" justifyContent="space-between" alignItems="center" p={2}
                             borderBottom="1px solid rgba(255,255,255,0.3)"
-                            key={item._id}>
-                            <Typography color="primary" component="p">{item.title.split("-").join(" ")}</Typography>
+                            key={item.productDetail._id}>
+                            <Typography color="primary" component="p">{item.productDetail.title.split("-").join(" ")}</Typography>
                             <Typography color="primary">{item.quantity} عدد</Typography>
-                            <Typography color="primary">{priceNumber(item.price)} تومان</Typography>
+                            <Typography color="primary">{priceNumber(item.productDetail.price)} تومان</Typography>
                         </Box>
                     ))
                 }

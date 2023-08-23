@@ -1,29 +1,18 @@
-import {Box, Button, Checkbox, FormControlLabel, FormGroup, Typography} from "@mui/material";
+import {Box, Button, Checkbox, FormControlLabel, FormGroup, Skeleton, Typography} from "@mui/material";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import MopedIcon from "@mui/icons-material/Moped";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import ButtonLoad from "../helper/decoration/ButtonLoad";
 import { priceNumber } from "../utils/priceNumber";
 
-const BuyCart = ({cart, loading, handlePayment}) => {
+const BuyCart = ({totalPrice, loading, handlePayment}) => {
     const [check, setCheck] = useState(false)
-    const [total, setTotal] = useState(0);
-
-    useEffect(() => {
-        const getTotal = () => {
-            const result = cart.reduce((prev, item) => {
-                return prev + item.price * item.quantity;
-            }, 0);
-            setTotal(result);
-        }
-        getTotal()
-    }, [cart]);
 
     return (
         <Box p={1} mb={2} className='border'>
             <Typography variant="h6" component="h3" color="primary" borderBottom="1px solid" py={1}>قیمت کل :
-                {priceNumber(total)} تومان
+                {loading ? <Skeleton animation="wave" variant="text" width={40} height={30} sx={{backgroundColor:'rgba(255,255,255,0.3)',display:'inline-flex',ml:1}}/> : priceNumber(totalPrice)} تومان
             </Typography>
             <Box display="flex" alignItems="center">
                 <GppGoodIcon color="warning"/>
@@ -52,7 +41,7 @@ const BuyCart = ({cart, loading, handlePayment}) => {
             </FormGroup>
             {loading ? <ButtonLoad loading={loading} message="منتظر بمانید..."/> :
                 <Button variant="contained" color="success" fullWidth disabled={!check}
-                        onClick={() => handlePayment(total)}>پرداخت</Button>
+                        onClick={handlePayment}>پرداخت</Button>
             }
         </Box>
     )

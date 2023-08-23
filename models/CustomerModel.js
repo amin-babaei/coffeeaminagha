@@ -6,16 +6,16 @@ const customerSchema = new mongoose.Schema({
         required: true,
         minlength: 7,
     },
-    email:{
-      required:true,
-      type:String,
-      unique:true
+    email: {
+        required: true,
+        type: String,
+        unique: true
     },
     phone: {
         type: Number,
         required: true,
         trim: true,
-        length:11,
+        length: 11,
         match: [/09([0-9])-?[0-9]{4}-?[0-9]{4}/, 'شماره موبایل اشتباه می باشد'],
     },
     password: {
@@ -39,7 +39,16 @@ const customerSchema = new mongoose.Schema({
     root: {
         type: Boolean,
         default: false
-    }
+    },
+    cart: {
+        type: [
+            {
+                productDetail: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true, },
+                quantity: { type: Number, required: true, default: 1, },
+            },
+        ],
+        default: [],
+    },
 }, {
     timestamps: true
 })

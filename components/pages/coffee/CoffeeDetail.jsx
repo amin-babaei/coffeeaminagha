@@ -1,34 +1,16 @@
 "use client"
-import { Box, Breadcrumbs, Button, Container, Grid, styled, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { DataContext } from "../../../store/GlobaStore";
-import { useContext, useState } from "react";
-import { addToCart } from "../../../store/Actions";
 import FormComment from '../../coffee/FormComment'
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";
 import { priceNumber } from "../../../utils/priceNumber";
-
-const ButtonPrice = styled(Button)(({ theme }) => ({
-    margin: "20px 0 2px 0",
-    width: "200px",
-    fontSize: "17px",
-    [theme.breakpoints.down("sm")]: {
-        width: "100%",
-    },
-}));
+import AddtoCart from "./AddtoCart";
+import Images from "./Images";
 
 const CoffeeDetail = ({ product }) => {
-    const [select, setSelect] = useState(0);
-    const { state, dispatch } = useContext(DataContext);
-    const { cart } = state;
-    const addedCart = () => {
-        dispatch({ type: "NOTIFY", payload: { success: "محصول در سبد خرید شما قرار گرفت" } });
-        dispatch(addToCart(product, cart));
-    };
-
     return (
         <Box marginTop="40px" minHeight="90vh" component="section">
             <Container maxWidth="lg">
@@ -42,29 +24,7 @@ const CoffeeDetail = ({ product }) => {
                     <Typography variant="body2" color="primary.dark">{product.title.split('-').join(" ")}</Typography>
                 </Breadcrumbs>
                 <Grid container rowSpacing={{ xs: 5, md: 0 }} columnSpacing={{ sm: 5 }}>
-                    <Grid item xs={12} sm={6}>
-                        <Box height={450} position='relative'>
-                            <Image src={product.images[select].url} fill alt={product.title} style={{ height: "100%", width: "100%" }} />
-                        </Box>
-                        <Box display="flex" flexWrap="wrap" width="100%" mt={2}>
-                            {product.images.map((img, index) => (
-                                <Box position="relative" width="80px"
-                                    height={"60px"} mx="5px" key={index}
-                                    sx={{
-                                        cursor: "pointer",
-                                        ...(select === index ? { border: '2px solid white' } : { border: 'none' })
-                                    }}
-                                >
-                                    <Image
-                                        src={img.url}
-                                        alt={index}
-                                        fill
-                                        onClick={() => setSelect(index)}
-                                    />
-                                </Box>
-                            ))}
-                        </Box>
-                    </Grid>
+                    <Images product={product}/>
                     <Grid item xs={12} sm={6}>
                         <Box color="primary.main">
                             <Typography variant="h2" component="h2" fontWeight='bold'>{product.title.split('-').join(" ")}</Typography>
@@ -73,19 +33,7 @@ const CoffeeDetail = ({ product }) => {
                             </Typography>
                             <Typography component="p" variant="h6" letterSpacing='1px' mt={5}
                                 fontWeight="bold"> قیمت: {priceNumber(product.price)} تومان</Typography>
-                                {cart.some(p => p._id === product._id) ? (
-                                    <Link href='cart'>
-                                        <ButtonPrice variant="outlined" color={"secondary"}>
-                                            تسویه حساب
-                                        </ButtonPrice>
-                            </Link>
-                                ) : (
-                            <ButtonPrice variant="outlined" color={"secondary"}
-                                disabled={product.inStock === 0}
-                                onClick={addedCart}>
-                                اضافه به سبد خرید
-                            </ButtonPrice>
-                                )}
+                               <AddtoCart product={product}/>
                             <Typography color="error" my={1} component="p" fontSize="14px">تعداد موجود در انبار
                                 : {product.inStock}</Typography>
                         </Box>

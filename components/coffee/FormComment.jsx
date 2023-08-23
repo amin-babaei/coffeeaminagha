@@ -1,3 +1,4 @@
+"use client"
 import {Box, Button, TextField, Typography} from "@mui/material";
 import Image from "next/image";
 import {DataContext} from "../../store/GlobaStore";

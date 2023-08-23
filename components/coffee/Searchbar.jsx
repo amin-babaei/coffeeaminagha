@@ -1,3 +1,4 @@
+"use client"
 import {Box, MenuItem, TextField} from "@mui/material";
 import {orderBy} from "lodash/collection";
 import Divider from "@mui/material/Divider";
