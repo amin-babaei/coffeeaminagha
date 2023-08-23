@@ -14,7 +14,6 @@ const ProfileLayout = ({children}) => {
     const router = useRouter();
     const {dispatch} = useContext(DataContext);
     const handleLogout = async () => {
-        localStorage.setItem("cart", "[]");
         dispatch({ type: 'NOTIFY', payload: {success: 'با موفقیت خارج شدی'} })
         return signOut({ callbackUrl: '/login' });
     }

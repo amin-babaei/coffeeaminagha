@@ -16,7 +16,7 @@ const Profile = () => {
     const {cart} = state;
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    console.log(cart);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -24,7 +24,6 @@ const Profile = () => {
         setAnchorEl(null);
     };
     const handleLogout = async () => {
-        localStorage.setItem("cart", "[]");
         dispatch({ type: 'NOTIFY', payload: {success: 'با موفقیت خارج شدی'} })
         return signOut({ callbackUrl: '/login' });
     }
