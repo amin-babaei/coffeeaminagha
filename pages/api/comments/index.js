@@ -1,11 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../utils/connectDB';
-import Products from '../../../models/ProductModel';
+import Comment from '../../../models/CommentModel';
 
 connectDB()
 
-export default async (req, res)=> {
-    switch(req.method){
+export default async (req, res) => {
+    switch (req.method) {
         case 'GET':
             await getComments(req, res)
             break;
@@ -14,13 +14,20 @@ export default async (req, res)=> {
 
 const getComments = async (req, res) => {
     try {
-        const comments = await Products.find().select('comments title').populate("comments.user", "-password").sort({ createdAt: -1 })
-        return res.json({
-            status:'success',
-            comments
-        })
+        const comments = await Comment.find()
+            .populate('user', 'userName')
+            .populate('productId', 'title')
+            .populate({
+                path: 'responseTo',
+                select: 'user',
+                populate: {
+                    path: 'user',
+                    select: 'userName'
+                }
+            });
+        res.status(200).json({ comments });
     } catch (err) {
-        return res.status(500).json({err: err.message})
+        return res.status(500).json({ err: err.message })
     }
 }
 

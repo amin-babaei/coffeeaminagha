@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-import {trim} from "lodash/string";
 
-const commentsSchema = new mongoose.Schema({
-
-})
 const productSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -30,34 +26,10 @@ const productSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    comments: [
-        {
-            text:{
-                type:String,
-                required:true,
-                trim:true
-            },
-            user: {
-                type: mongoose.Types.ObjectId,
-                ref: 'Customer'
-            },
-            checked:{
-                type:Boolean,
-                default:false
-            },
-            productId: {
-                type: mongoose.Types.ObjectId,
-            },
-            createdAt: {
-                type: Date,
-                default: Date.now
-            }
-        }
-    ]
-
+    comments: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }]
 }, {
     timestamps: true
-})
+});
 
 const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
 export default Product;

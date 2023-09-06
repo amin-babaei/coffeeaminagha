@@ -8,7 +8,7 @@ import {useForm,Controller} from "react-hook-form";
 import {useSession} from "next-auth/react";
 import ButtonLoad from "../../helper/decoration/ButtonLoad";
 
-const FormComment = ({productId}) => {
+const FormComment = ({ productId, responseTo }) => {
     const {control, handleSubmit,reset, formState} = useForm({
         mode: "onChange", reValidateMode: 'onBlur'
     });
@@ -28,7 +28,8 @@ const FormComment = ({productId}) => {
             const send = await postData(`comments/${productId}`,{
                 user:session.user,
                 text,
-                productId
+                productId,
+                responseTo
             })
             if (send.message === 'success'){
                 dispatch({type: 'LOADING',payload: false})

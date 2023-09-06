@@ -1,6 +1,7 @@
 import connectDB from "../../../../utils/connectDB";
 import Product from '../../../../models/ProductModel'
 import CustomerModel from '../../../../models/CustomerModel'
+import CommentModel from '../../../../models/CommentModel'
 import CoffeeDetail from '../../../../components/pages/coffee/CoffeeDetail'
 import { notFound } from "next/navigation";
 
@@ -19,7 +20,18 @@ export async function generateMetadata({ params }) {
 const Detail = async ({ params }) => {
   const getOneCoffee = async (title) => {
     connectDB()
-    let response = await Product.findOne({ title }).lean().populate('comments.user', 'userName email phone', CustomerModel);
+    let response = await Product.findOne({ title }).lean()
+    .populate({
+      path: "comments",
+      model: CommentModel,
+      populate: [
+        {
+          path: "user",
+          model: CustomerModel,
+          select: 'userName'
+        },
+      ],
+    });
     return JSON.parse(JSON.stringify(response));
   }
   const encodeParams = decodeURIComponent(params.title)

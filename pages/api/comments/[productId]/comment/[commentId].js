@@ -3,6 +3,7 @@ import connectDB from '../../../../../utils/connectDB'
 import Products from '../../../../../models/ProductModel'
 import { authOptions } from '../../../auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
+import Comment from '../../../../../models/CommentModel';
 
 connectDB()
 
@@ -25,10 +26,25 @@ const verifyComment = async(req, res) => {
         if(session.user.root !== true) return res.status(400).json({err: 'شما اجازه این کار را ندارید'})
         const {productId} = req.query
         const {commentId} = req.query
+        
+        const product = await Products.findById(productId).populate('comments');
+        if (!product) {
+          return res.status(400).json({ err: 'این محصول وحود ندارد' });
+        }
+        const comment = await Comment.findByIdAndUpdate(
+            commentId,
+            { checked: true },
+            { new: true }
+          ).populate({path: 'user', model: 'Customer'});
 
-        await Products.findOneAndUpdate({ "_id": productId, "comments._id": commentId},{$set: {"comments.$.checked":true}})
+          if (!comment) {
+            return res.status(400).json({ err: 'این کامنت وجود ندارد' });
+          }
 
-        return res.status(200).json({message: 'آپدیت موفقیت آمیز بود'})
+          product.comments.push(comment);
+          await product.save();
+      
+          return res.status(200).json({ message: 'آپدیت موفقیت آمیز بود', product });
     } catch (err) {
         return res.status(500).json({err: err.message})
     }
