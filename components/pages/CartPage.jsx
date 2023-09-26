@@ -13,10 +13,12 @@ import { getData, postData } from "../../services/fetchData";
 import { priceNumber } from "../../utils/priceNumber";
 import { addToCart, decreaseToCart, deleteToCart } from "../../store/Actions";
 import { useEffect } from "react";
+import { useState } from "react";
 
 const CartPage = () => {
     const { data: session } = useSession()
     const { state, dispatch } = useContext(DataContext);
+    const [loadingProduct, setLoadingProduct] = useState({});
     const { cart, orders, loading } = state;
     const { userCart,totalPrice } = cart
     const router = useRouter()
@@ -29,10 +31,10 @@ const CartPage = () => {
     }, [dispatch])
 
     const handleIncrease = (productId) => {
-        dispatch(addToCart(productId, session.user._id, dispatch))
+        dispatch(addToCart(productId, session.user._id, dispatch, setLoadingProduct));
     };
     const handleDecreaseToCart = (productId) => {
-        dispatch(decreaseToCart(productId, session.user._id, dispatch))
+        dispatch(decreaseToCart(productId, session.user._id, dispatch, setLoadingProduct))
     };
     const handleDeleteToCart = (productId) => {
         dispatch(deleteToCart(productId, session.user._id, dispatch))
@@ -87,7 +89,7 @@ const CartPage = () => {
                                                 />
                                             </Button>
                                             <Typography color="primary" px={3}>
-                                                {loading ? <Skeleton animation="wave" variant="text" width={30} height={30} sx={{backgroundColor:'rgba(255,255,255,0.3)'}}/> : product.quantity}
+                                            {loadingProduct[product.productDetail._id] ? <Skeleton animation="wave" variant="text" width={30} height={30} sx={{backgroundColor:'rgba(255,255,255,0.3)'}}/> : product.quantity}
                                             </Typography>
                                             <Button disabled={product.quantity === 1} sx={{ minWidth: "0", p: 0 }}
                                                 onClick={() => handleDecreaseToCart(product.productDetail._id)}>

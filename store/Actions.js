@@ -7,8 +7,9 @@ export const ACTIONS = {
   ADD_CART: 'ADD_CART',
   ADD_ORDERS: 'ADD_ORDERS',
 }
-export const addToCart = async (productId, customerId, dispatch) => {
+export const addToCart = async (productId, customerId, dispatch, setLoadingProduct) => {
   dispatch({ type: "LOADING", payload: true });
+  if(setLoadingProduct) setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: true }));
 
   try {
     const response = await postData('cart/add-to-cart', {
@@ -18,6 +19,7 @@ export const addToCart = async (productId, customerId, dispatch) => {
     });
 
     dispatch({ type: "LOADING", payload: false });
+    if(setLoadingProduct) setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: false }));
     dispatch({ type: 'NOTIFY', payload: { success: response.message } });
     if (response) {
       const cartResponse = await getData('cart');
@@ -28,11 +30,13 @@ export const addToCart = async (productId, customerId, dispatch) => {
   } catch (error) {
     console.error(error);
     dispatch({ type: "LOADING", payload: false });
+    if(setLoadingProduct) setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: false }));
     dispatch({ type: 'NOTIFY', payload: { error: 'خطای سرور' } });
   }
 };
-export const decreaseToCart = async (productId,customerId,dispatch) => {
+export const decreaseToCart = async (productId, customerId, dispatch, setLoadingProduct) => {
   dispatch({ type: "LOADING", payload: true });
+  setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: true }));
 
   try {
     const response = await postData('cart/remove', {
@@ -41,6 +45,7 @@ export const decreaseToCart = async (productId,customerId,dispatch) => {
     });
 
     dispatch({ type: "LOADING", payload: false });
+    setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: false }));
     dispatch({ type: 'NOTIFY', payload: { success: response.message } });
     if (response) {
       const cartResponse = await getData('cart');
@@ -50,6 +55,7 @@ export const decreaseToCart = async (productId,customerId,dispatch) => {
   } catch (error) {
     console.error(error);
     dispatch({ type: "LOADING", payload: false });
+    setLoadingProduct((prevLoadingProduct) => ({ ...prevLoadingProduct, [productId]: false }));
     dispatch({ type: 'NOTIFY', payload: { error: 'خطای سرور' } });
   }
 };
