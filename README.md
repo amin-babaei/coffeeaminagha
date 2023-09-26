@@ -21,9 +21,11 @@ This project utilizes Next.js on the front-end, leveraging its powerful built-in
 - Password recovery
 - View previous orders
 - Comment for each product
-- Send email to communicate with the seller
+- Nested comments
+- Send email to communicate with the owner
 - Admin Panel
 - Admin can add a product, approve comments for display, delete users, and track orders
+- Comment display requires approval by the admin
 
 <br />
 
