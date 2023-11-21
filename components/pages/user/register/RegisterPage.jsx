@@ -6,15 +6,15 @@ import Image from "next/image";
 import FooterSignup from "../../../footers/FooterSignup";
 import { DataContext } from "../../../../store/GlobaStore";
 import Notify from "../../../../helper/decoration/Notify";
-import { useRouter } from "next/navigation";
 import { postData } from "../../../../services/fetchData";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
+import { signIn } from "next-auth/react";
 
 const RegisterPage = () => {
     const { state, dispatch } = useContext(DataContext);
     const { loading } = state;
-    const router = useRouter();
+
     const { control, register, watch, handleSubmit, formState:{errors,isValid} } = useForm({
         mode: "all", reValidateMode: 'onBlur',defaultValues:{
             userName: '',
@@ -48,7 +48,12 @@ const RegisterPage = () => {
             if (res) {
                 dispatch({ type: "LOADING", payload: false });
                 dispatch({ type: 'NOTIFY', payload: { success: res.msg } })
-                router.push("/login");
+                await signIn("credentials", {
+                    email: data.email,
+                    password: data.password,
+                    redirect: true,
+                    callbackUrl: "/",
+                })
             }
             return dispatch({ type: 'NOTIFY', payload: { error: res.err } })
         } catch (err) {
