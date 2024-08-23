@@ -27,7 +27,7 @@ const AddtoCart = ({ product }) => {
     return (
         <>
             {cart?.userCart?.some(p => p.productDetail?._id === product._id) ? (
-                <Link href='cart'>
+                <Link href='/cart'>
                     <ButtonPrice variant="outlined" color={"secondary"}>
                         تسویه حساب
                     </ButtonPrice>
