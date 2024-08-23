@@ -22,7 +22,7 @@ const getCart = async (req, res) => {
     .populate({
       path: 'cart.productDetail',
       model: ProductModel,
-      select: '-comments -sold',
+      select: '-comments',
     });
 
     const totalPrice = cart.cart.reduce((total, item) => {
