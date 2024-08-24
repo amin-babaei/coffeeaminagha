@@ -8,14 +8,14 @@ export const theme= createTheme({
             main: '#f4bf79'  
         },
         primary:{
-            light:'#ffffff',
+            light:'#e3e3e3',
             main: '#fff',
         },
     },
    typography:{
     h1:{
         '@media (min-width:600px)': {
-            fontSize: '2.7rem',
+            fontSize: '3.7rem',
         },
         '@media (max-width:600px)': {
             fontSize: '2rem',
@@ -30,7 +30,10 @@ export const theme= createTheme({
         },
     },
     subtitle1:{
-        fontSize: '1.15rem',
+        fontSize: '22px',
+        '@media (max-width:600px)': {
+            fontSize: '18px',
+        },
     },
     body2:{
         fontSize: '14px',

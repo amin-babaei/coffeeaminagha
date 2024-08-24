@@ -9,7 +9,10 @@ const HeaderCustom = styled('header')(({theme}) => ({
     display: "flex",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
-        backgroundPosition: "left",
+        backgroundPosition: "right",
+        minHeight:"500px",
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        backgroundBlendMode: "overlay"
     },
 }));
 
@@ -17,12 +20,12 @@ const Header = () => {
     return (
         <HeaderCustom>
             <Container maxWidth="lg">
-                <Box sx={{maxWidth: "30rem", marginBottom: "10rem"}}>
+                <Box sx={{maxWidth: "32rem", marginBottom: "10rem"}}>
                     <Typography variant="h1" component="h1" color="secondary"
                                 sx={{marginBottom: "4rem", fontWeight: 900}}>
                         کافی شاپ امین آقا
                     </Typography>
-                    <Typography variant="subtitle1" component="p" color="primary" lineHeight="2" textAlign="justify">
+                    <Typography variant="subtitle1" component="p" lineHeight="2" textAlign="justify" fontStyle="italic" sx={{color:"primary.light"}}>
                         شما اینجا هستید زیرا عاشق قهوه هستید، ما اینجا هستیم زیرا شما را دوست داریم
                     </Typography>
                 </Box>
